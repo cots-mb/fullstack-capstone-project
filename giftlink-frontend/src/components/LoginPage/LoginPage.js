@@ -78,7 +78,7 @@ function LoginPage() {
                                 className="form-control"
                                 placeholder="Enter your email"
                                 value={email}
-                                onChange={(e) => setEmail(e.target.value); setIncorrect("")}}
+                                onChange={(e) => setEmail(e.target.value)}
                             />
                         </div>
                         <div className="mb-4">
@@ -89,7 +89,7 @@ function LoginPage() {
                                 className="form-control"
                                 placeholder="Enter your password"
                                 value={password}
-                                onChange={(e) => setPassword(e.target.value); setIncorrect("")}}
+                                onChange={(e) => setPassword(e.target.value)}
                             />
                              <span style={{color:'red',height:'.5cm',display:'block',fontStyle:'italic',fontSize:'12px'}}>{incorrect}</span>   
                         </div>
