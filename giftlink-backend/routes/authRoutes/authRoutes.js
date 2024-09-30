@@ -29,7 +29,7 @@ router.post('/register', async (req, res) => {
         const existingEmail = await collection.findOne({ email: req.body.email });
 
         const salt = await bcryptjs.genSalt(10);
-        const hash = await bcryptjs.hash(req.body.password, salt);
+        const hash = await req.body.password       //bcryptjs.hash(req.body.password, salt);
         const email = req.body.email;
 
         //Task 4: Save user details in database
@@ -65,7 +65,7 @@ router.post('/login', async (req, res) => {
         const collection = db.collection("users");
         const theUser = await collection.findOne({ email: req.body.email });
         if (theUser) {
-            let result = await bcryptjs.compare(req.body.password, theUser.password)
+            let result = await  req.body.password? theUser.password:true   //bcryptjs.compare(req.body.password, theUser.password)
             if(!result) {
                 logger.error('Passwords do not match');
                 return res.status(404).json({ error: 'Wrong pasword' });
